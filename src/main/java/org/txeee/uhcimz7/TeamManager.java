@@ -19,7 +19,7 @@ public class TeamManager {
             team = scoreboard.registerNewTeam(teamName);
         }
 
-        team.setPrefix("⭐ " + color.toString());
+        team.setPrefix(color.toString());
         team.setColor(color);
         team.setDisplayName(color + teamName);
         team.setOption(Team.Option.DEATH_MESSAGE_VISIBILITY, Team.OptionStatus.ALWAYS);
