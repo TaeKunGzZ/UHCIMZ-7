@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.util.Map;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class FileManager {
     private final Uhcimz plugin;

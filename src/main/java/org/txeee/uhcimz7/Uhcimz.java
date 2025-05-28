@@ -1,10 +1,10 @@
 package org.txeee.uhcimz7;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.txeee.uhcimz7.commands.LobbyCommand;
+import org.txeee.uhcimz7.commands.TestCommand;
 import org.txeee.uhcimz7.listeners.Listeners;
 import org.txeee.uhcimz7.runnable.Timing;
 
@@ -49,6 +49,7 @@ public final class Uhcimz extends JavaPlugin {
 
     private void registeredCommand() {
         Objects.requireNonNull(getCommand("lobby")).setExecutor(new LobbyCommand(this));
+        Objects.requireNonNull(getCommand("test")).setExecutor(new TestCommand());
     }
 
     public static int getKills(Player player) {
@@ -66,10 +67,6 @@ public final class Uhcimz extends JavaPlugin {
         teamManager.createTeam("aqua", ChatColor.AQUA);
         teamManager.createTeam("light_purple", ChatColor.LIGHT_PURPLE);
         teamManager.createTeam("dark_purple", ChatColor.DARK_PURPLE);
-
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            teamManager.addPlayerToTeam(player, "red");
-        }
     }
 }
 

@@ -2,7 +2,6 @@ package org.txeee.uhcimz7;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
@@ -27,26 +26,26 @@ public class TeamManager {
         team.setAllowFriendlyFire(false);
     }
 
-    public void addPlayerToTeam(Player player, String teamName) {
-        Team team = scoreboard.getTeam(teamName);
-        if (team != null) {
-            team.addEntry(player.getName());
-            player.setScoreboard(scoreboard);
-        }
-    }
-
-    public void removePlayerFromTeam(Player player) {
-        for (Team team : scoreboard.getTeams()) {
-            if (team.hasEntry(player.getName())) {
-                team.removeEntry(player.getName());
-            }
-        }
-    }
-
-    public void deleteTeam(String teamName) {
-        Team team = scoreboard.getTeam(teamName);
-        if (team != null) {
-            team.unregister();
-        }
-    }
+//    public void addPlayerToTeam(Player player, String teamName) {
+//        Team team = scoreboard.getTeam(teamName);
+//        if (team != null) {
+//            team.addEntry(player.getName());
+//            player.setScoreboard(scoreboard);
+//        }
+//    }
+//
+//    public void removePlayerFromTeam(Player player) {
+//        for (Team team : scoreboard.getTeams()) {
+//            if (team.hasEntry(player.getName())) {
+//                team.removeEntry(player.getName());
+//            }
+//        }
+//    }
+//
+//    public void deleteTeam(String teamName) {
+//        Team team = scoreboard.getTeam(teamName);
+//        if (team != null) {
+//            team.unregister();
+//        }
+//    }
 }
