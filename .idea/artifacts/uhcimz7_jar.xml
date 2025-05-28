@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="uhcimz7:jar">
+    <output-path>E:/pv_server_test/test 2/uhcimz test/plugins</output-path>
+    <root id="archive" name="uhcimz7.jar">
+      <element id="module-output" name="uhcimz7" />
+    </root>
+  </artifact>
+</component>

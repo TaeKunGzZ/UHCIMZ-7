@@ -1,0 +1,7 @@
+name: uhcimz7
+version: '1.0-SNAPSHOT'
+main: org.txeee.uhcimz7.Uhcimz
+api-version: '1.16'
+commands:
+  lobby:
+    description:

@@ -1,0 +1,43 @@
+package org.txeee.uhcimz7.commands;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+public class LobbyCommand implements CommandExecutor {
+    private final Plugin plugin;
+
+    public LobbyCommand(Plugin plugin) {
+        this.plugin = plugin;
+    }
+
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (!(sender instanceof Player)) return false;
+
+        sendToServer((Player) sender, "lobby");
+        return false;
+    }
+
+    public void sendToServer(Player player, String targetServer) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        DataOutputStream dataOut = new DataOutputStream(out);
+
+        try {
+            dataOut.writeUTF("Connect");
+            dataOut.writeUTF(targetServer);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        player.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
+    }
+}
