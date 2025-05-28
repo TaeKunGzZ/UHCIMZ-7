@@ -3,6 +3,8 @@ package org.txeee.uhcimz7;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.util.Map;
+import java.util.Objects;
 
 public class FileManager {
     private final Uhcimz plugin;
@@ -37,6 +39,12 @@ public class FileManager {
         Uhcimz.mins = config.getInt("timer.minutes", 0);
         Uhcimz.hrs = config.getInt("timer.hours", 0);
         Uhcimz.gameStarted = config.getBoolean("game.is_starting", false);
+        if (config.contains("player.kills")) {
+            for (String playerName : Objects.requireNonNull(config.getConfigurationSection("player.kills")).getKeys(false)) {
+                int kills = config.getInt("player.kills." + playerName);
+                Uhcimz.kills.put(playerName, kills);
+            }
+        }
     }
 
     public void saveScore() {
@@ -44,6 +52,9 @@ public class FileManager {
         config.set("timer.mins", Uhcimz.mins);
         config.set("timer.hrs", Uhcimz.hrs);
         config.set("game.is_starting", Uhcimz.gameStarted);
+        for (Map.Entry<String, Integer> entry : Uhcimz.kills.entrySet()) {
+            config.set("player.kills." + entry.getKey(), entry.getValue());
+        }
 
         try {
             config.save(configFile);
