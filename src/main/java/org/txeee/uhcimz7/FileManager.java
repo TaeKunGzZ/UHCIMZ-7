@@ -5,7 +5,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Logger;
 
 public class FileManager {
     private final Uhcimz plugin;
@@ -34,11 +33,9 @@ public class FileManager {
     }
 
     public void loadScore() {
-        if (config == null) return;
-
-        Uhcimz.secs = config.getInt("timer.seconds", 0);
-        Uhcimz.mins = config.getInt("timer.minutes", 0);
-        Uhcimz.hrs = config.getInt("timer.hours", 0);
+        Uhcimz.secs = config.getInt("timer.secs", 0);
+        Uhcimz.mins = config.getInt("timer.mins", 0);
+        Uhcimz.hrs = config.getInt("timer.hrs", 0);
         Uhcimz.gameStarted = config.getBoolean("game.is_starting", false);
         if (config.contains("player.kills")) {
             for (String playerName : Objects.requireNonNull(config.getConfigurationSection("player.kills")).getKeys(false)) {
@@ -49,7 +46,7 @@ public class FileManager {
     }
 
     public void saveScore() {
-        config.set("timer.seconds", Uhcimz.secs);
+        config.set("timer.secs", Uhcimz.secs);
         config.set("timer.mins", Uhcimz.mins);
         config.set("timer.hrs", Uhcimz.hrs);
         config.set("game.is_starting", Uhcimz.gameStarted);

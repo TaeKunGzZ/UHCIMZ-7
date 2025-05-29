@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.txeee.uhcimz7.commands.LobbyCommand;
 import org.txeee.uhcimz7.commands.TestCommand;
 import org.txeee.uhcimz7.listeners.Listeners;
+import org.txeee.uhcimz7.runnable.Ticking;
 import org.txeee.uhcimz7.runnable.Timing;
 
 import java.util.HashMap;
@@ -13,8 +14,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public final class Uhcimz extends JavaPlugin {
-    // initialize Timing
+    // initialize Timing and Ticking
     private final Timing timing = new Timing();
+    private final Ticking ticking = new Ticking();
 
     // hrs, mins, secs, gameStarted, kills
     public static int hrs;
@@ -33,6 +35,7 @@ public final class Uhcimz extends JavaPlugin {
         registeredCommand(); // registeredCommands
 
         timing.runTaskTimer(this, 0L, 20L);
+        ticking.runTaskTimer(this, 0L, 10L);
 
         fileManager = new FileManager(this);
         fileManager.loadScore();
