@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public final class Uhcimz extends JavaPlugin {
     // initialize Timing and Ticking
-    private final Timing timing = new Timing();
+    private final Timing timing = new Timing(this);
     private final Ticking ticking = new Ticking();
 
     // hrs, mins, secs, gameStarted, kills
@@ -23,6 +23,7 @@ public final class Uhcimz extends JavaPlugin {
     public static int mins;
     public static int secs;
     public static boolean gameStarted = false;
+    public static boolean isPVPon = false;
     public static final Map<String, Integer> kills = new HashMap<>();
 
     // initialize FileManager
@@ -35,7 +36,7 @@ public final class Uhcimz extends JavaPlugin {
         registeredCommand(); // registeredCommands
 
         timing.runTaskTimer(this, 0L, 20L);
-        ticking.runTaskTimer(this, 0L, 10L);
+        ticking.runTaskTimer(this, 0L, 20L);
 
         fileManager = new FileManager(this);
         fileManager.loadScore();
