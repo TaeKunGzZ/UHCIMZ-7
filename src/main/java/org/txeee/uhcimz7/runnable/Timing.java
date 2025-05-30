@@ -35,7 +35,7 @@ public class Timing extends BukkitRunnable {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (Uhcimz.gameStarted) {
-                sendToServer(player, "lobby");
+                sendToServer(player, "world");
             }
         }
     }
